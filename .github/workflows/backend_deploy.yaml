@@ -27,7 +27,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 10
+          version: 9
           run_install: false
 
       - name: Deploy Backend for ${{ github.ref_name }}
@@ -37,7 +37,7 @@ jobs:
           
           if [ -n "$use_worker_assets" ]; then
             cd frontend/
-            pnpm install --no-frozen-lockfile
+            pnpm install --no-frozen-lockfile --allow-build
             if [ -n "$use_worker_assets_with_telegram" ]; then
               echo "Building with telegram pages"
               pnpm build:telegram:pages
